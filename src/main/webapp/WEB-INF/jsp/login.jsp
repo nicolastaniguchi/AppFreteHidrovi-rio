@@ -14,15 +14,15 @@
 		<h3>Login</h3>
 		
 		<form action="/login" method="post">
-
+	
 		<div class="form-group">
-		<label>E-mail:</label>
-		<input type="email" name="email" value="nicolas@email.com" placeholder="Digite o seu email" class="form-control">
+			<label>E-mail:</label>
+			<input type="email" name="email" value="nicolas@email.com" placeholder="Digite o seu email" class="form-control">
 		</div>
-		
+			
 		<div class="form-group">
-		<label>Senha:</label>
-		<input type="password" name="senha" value="123456" placeholder="Digite a sua senha" class="form-control">
+			<label>Senha:</label>
+			<input type="password" name="senha" value="nicolas@email.com" placeholder="Digite a sua senha" class="form-control">
 		</div>
 
 		<button type="submit" class="btn btn-default">Acessar</button>

@@ -16,30 +16,15 @@ public class AcessoController {
 		return "login";
 	}
 	
-/*	@PostMapping(value = "/login")
-	public String login(Usuario usuario) {
-		
-		System.out.println("Email " + usuario.getEmail());
-		System.out.println("Senha " + usuario.getSenha());
-		
-		return "redirect:/home";
-	}
-}
-*/
-	
 	@PostMapping(value = "/login")
 	public String login(@RequestParam String email, @RequestParam String senha) {
 		
 		Usuario user = new Usuario(email, senha);
-		
-		System.out.println(user);
 
 		if(AcessoRepository.autenticar(user) != null) {
 			return "redirect:/home";
 		}
 		return "redirect:/login";
-		
 	}
 }
 
-//

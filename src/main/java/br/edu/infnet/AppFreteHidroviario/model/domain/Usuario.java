@@ -3,9 +3,9 @@ package br.edu.infnet.AppFreteHidroviario.model.domain;
 public class Usuario {
 	
 	private String nome;
-	private String sobrenome;
 	private String senha;
 	private String email;
+	
 	
 	public Usuario() {
 		
@@ -32,13 +32,6 @@ public class Usuario {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-	public String getSobrenome() {
-		return sobrenome;
-	}
-
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
 	}
 	public String getSenha() {
 		return senha;

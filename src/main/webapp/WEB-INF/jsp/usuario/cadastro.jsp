@@ -18,12 +18,7 @@
 		<label>Nome:</label>
 		<input type="text" name="nome" value="Nicolas" class="form-control">
 		</div>
-		
-		<div class="form-group">
-		<label>Sobrenome:</label>
-		<input type="text" name="sobrenome" value="Taniguchi" class="form-control">
-		</div>
-		
+
 		<div class="form-group">
 		<label>Senha:</label>
 		<input type="password" name="senha" value="123456" class="form-control">

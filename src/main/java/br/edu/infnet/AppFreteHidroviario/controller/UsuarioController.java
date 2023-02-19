@@ -27,7 +27,7 @@ public class UsuarioController {
 		System.out.println("Quantidade de usuários = " + lista.size());
 		
 		for(Usuario user : lista) {
-			System.out.println("A inclusão do usuário " + user.getNome() + ", com o email: "+ user.getEmail() + " foi realizada com sucesso.");
+			System.out.printf("%s - %s\n", user.getNome(), user.getEmail());
 		}
 		
 		return "usuario/lista";
@@ -41,7 +41,4 @@ public class UsuarioController {
 		
 		return "redirect:/usuario/lista";
 	}
-
-	
-
 }
