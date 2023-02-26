@@ -2,12 +2,12 @@ package br.edu.infnet.AppFreteHidroviario.model.domain;
 
 public class BalsaCarreteira extends Embarcacoes {
 	
-	private int tamanho;
+
 	private int qtdeFrotas;
 	private boolean segurancas;
 	
-	public BalsaCarreteira(String frota, String nome, float valor) {
-		super(frota, nome, valor);
+	public BalsaCarreteira(Integer frota, String nome, float valor, float comprimento, float largura, float altura) {
+		super(frota, nome, valor, comprimento, largura, altura);
 	}
 
 	@Override
@@ -22,8 +22,6 @@ public class BalsaCarreteira extends Embarcacoes {
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append(super.toString());
-		sb.append(";");		
-		sb.append(tamanho);
 		sb.append(";");
 		sb.append(qtdeFrotas);		
 		sb.append(";");
@@ -31,13 +29,7 @@ public class BalsaCarreteira extends Embarcacoes {
 		
 		return sb.toString();
 	}
-		
-	public int getTamanho() {
-		return tamanho;
-	}
-	public void setTamanho(int tamanho) {
-		this.tamanho = tamanho;
-	}
+
 	public int getQtdeFrotas() {
 		return qtdeFrotas;
 	}

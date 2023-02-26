@@ -7,8 +7,8 @@ public class BalsaGraneleira extends Embarcacoes {
 	private String modelo;
 	private boolean limpeza;
 	
-	public BalsaGraneleira(String frota, String nome, float valor) {
-		super(frota, nome, valor);
+	public BalsaGraneleira(Integer frota, String nome, float valor, float comprimento, float largura, float altura) {
+		super(frota, nome, valor, comprimento, largura, altura);
 	}
 	
 	private float valorLimpeza() {

@@ -6,8 +6,8 @@ public class Empurrador extends Embarcacoes {
 	private boolean rancho;
 	private int motor;
 	
-	public Empurrador(String frota, String nome, float valor) {
-		super(frota, nome, valor);
+	public Empurrador(Integer frota, String nome, float valor, float comprimento, float largura, float altura) {
+		super(frota, nome, valor, comprimento, largura, altura);
 	}
 	
 	private float valorTripulacao() {

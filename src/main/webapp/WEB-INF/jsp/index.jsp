@@ -1,21 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <meta charset="ISO-8859-1">
 <title>AppFreteHidroviario</title>
 </head>
 <body>
-	<h1>AppFreteHidroviario</h1>
 	
-	<h3>Cadastro de <a href="/usuario/lista">usuários</a></h3>
-	<h3>Cadastro de <a href="/cliente">clientes</a></h3>
-	<h3>Cadastro de <a href="/frete">frete</a></h3>
-	<h3>Cadastro de <a href="/embarcacoes">embarcações</a></h3>
-	<h3>Cadastro de <a href="/empurrador">empurrador</a></h3>
-	<h3>Cadastro de <a href="/balsacarreteira">balsa carreteira</a></h3>
-	<h3>Cadastro de <a href="/balsagraneleira">balsa graneleira</a></h3>
+	<c:import url="/WEB-INF/jsp/menu.jsp"/>
 	
 </body>
 </html>

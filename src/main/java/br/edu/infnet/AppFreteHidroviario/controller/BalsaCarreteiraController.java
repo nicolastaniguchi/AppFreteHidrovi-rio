@@ -1,26 +1,57 @@
 package br.edu.infnet.AppFreteHidroviario.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import br.edu.infnet.AppFreteHidroviario.model.domain.BalsaCarreteira;
+import br.edu.infnet.AppFreteHidroviario.repository.BalsaCarreteiraRepository;
 
 @Controller
 public class BalsaCarreteiraController {
+	
+	private String msg;
 	
 	@GetMapping(value = "/balsacarreteira")	
 	public String telaCadastro() {
 		
 		return "balsacarreteira/cadastro";
-	
 	}
 	
-	@PostMapping(value = "/balsacarreteira/incluir")
-	public String incluir(BalsaCarreteira balsacarreteira) {
-		System.out.println("Inclusão realizada com sucesso!!");
+	@GetMapping(value = "/balsacarreteira/lista")	
+	public String telaLista(Model model) {
 		
-		return "redirect:/";
+		model.addAttribute("balsaCarreteira", BalsaCarreteiraRepository.obterLista());
+		
+		model.addAttribute("mensagem", msg);
+		
+		msg = null;
+		
+		return "balsacarreteira/lista";
+	
 	}
 
+	@PostMapping(value = "/balsacarreteira/incluirbc")
+	public String incluirBalsaCarreteira(BalsaCarreteira balsacarreteira) {
+		
+		BalsaCarreteiraRepository.incluir(balsacarreteira);
+		
+		msg = "A inclusão da embarcação " + balsacarreteira.getNome() +" foi realizada com sucesso!";
+		
+		return "redirect:/balsacarreteira/lista";
+	}
+	
+	@GetMapping(value = "/balsacarreteira/{frota}/excluir")
+	public String excluir(@PathVariable Integer frota) {
+
+		BalsaCarreteira balsacarreteira  = BalsaCarreteiraRepository.excluir(frota);
+		
+		msg = "A exclusão da embarcação " + balsacarreteira.getNome() +" foi realizada com sucesso!";
+		
+		return "redirect:/balsacarreteira/lista";
+	}
+	
+	
 }
