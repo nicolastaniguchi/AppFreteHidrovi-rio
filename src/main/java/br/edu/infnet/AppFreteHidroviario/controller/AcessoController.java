@@ -5,11 +5,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import br.edu.infnet.AppFreteHidroviario.model.domain.Usuario;
 import br.edu.infnet.AppFreteHidroviario.repository.AcessoRepository;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
+@SessionAttributes("usuario")
 public class AcessoController {
 	
 	@GetMapping(value = "/login")
@@ -23,6 +27,9 @@ public class AcessoController {
 		Usuario user = new Usuario(email, senha);
 
 		if(AcessoRepository.autenticar(user) != null) {
+			
+			model.addAttribute("usuario", user);
+			
 			return "redirect:/home";
 		}
 		
@@ -30,5 +37,16 @@ public class AcessoController {
 		
 		return telaLogin();
 	}
+	
+	@GetMapping(value = "/logout")
+	public String logout(HttpSession session, SessionStatus status) {
+		
+		status.setComplete();
+		
+		session.removeAttribute("usuario");
+		
+		return "redirect:/";
+	}
+	
 }
 
