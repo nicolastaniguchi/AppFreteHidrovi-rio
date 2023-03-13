@@ -1,0 +1,3 @@
+Zé;111000111 ;zezinho@email.com
+Roberto;222000222 ;roberto@email.com
+Wanderley;333000333;wanderley@email.com

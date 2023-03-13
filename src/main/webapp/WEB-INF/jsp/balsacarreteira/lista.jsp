@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <meta charset="ISO-8859-1">
 <title>Lista - Balsas Carreteiras</title>
 </head>
@@ -32,7 +33,8 @@
 		</c:if>
 
 		<c:if test="${not empty balsaCarreteira}">
-			<h4>Quantidade de balsas carreteiras cadastradas: ${balsaCarreteira.size()}</h4>
+			<h4>Quantidade de balsas carreteiras cadastradas:
+				${balsaCarreteira.size()}</h4>
 
 
 			<table class="table table-striped">
@@ -43,7 +45,7 @@
 						<th>Valor</th>
 						<th>Comprimento(m)</th>
 						<th>Largura(m)</th>
-						<th>Altura(m)</th>						
+						<th>Altura(m)</th>
 						<th>Limite Máximo de Frotas</th>
 						<th>Serviço de Segurança</th>
 					</tr>
@@ -65,9 +67,11 @@
 				</tbody>
 			</table>
 		</c:if>
-		
-		<a class="btn btn-primary" href="/balsacarreteira" role="button">Novo Cadastro</a>
-		
+
+		<form action="/balsacarreteira" method="get">
+			<button type="submit">Novo Cadastro</button>
+		</form>
+
 	</div>
 
 </body>

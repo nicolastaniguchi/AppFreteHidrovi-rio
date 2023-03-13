@@ -17,7 +17,11 @@ public abstract class Embarcacoes {
 		this.largura = largura;
 		this.altura = altura;
 	}
-	
+
+	public Embarcacoes(String nome, String valor, String comprimento, String largura, String altura) {
+		
+	}
+
 	public abstract float calcularValorFrete();
 	
 	@Override

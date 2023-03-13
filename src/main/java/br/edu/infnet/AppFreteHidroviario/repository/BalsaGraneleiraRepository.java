@@ -4,15 +4,18 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import br.edu.infnet.AppFreteHidroviario.model.domain.BalsaGraneleira;
 
+@Repository
 public class BalsaGraneleiraRepository {
 	
 	private static Integer frota = 1;
 	
 	private static Map<Integer, BalsaGraneleira> mapaBalsaGraneleira = new HashMap<Integer, BalsaGraneleira>();
 	
-	public static boolean incluir(BalsaGraneleira balsaGraneleira) {
+	public boolean incluir(BalsaGraneleira balsaGraneleira) {
 		
 		balsaGraneleira.setFrota(frota++);
 		
@@ -24,12 +27,12 @@ public class BalsaGraneleiraRepository {
 		}
 	}
 	
-	public static BalsaGraneleira excluir(Integer key) {
+	public BalsaGraneleira excluir(Integer key) {
 
 		return mapaBalsaGraneleira.remove(key);
 	}
 	
-	public static Collection<BalsaGraneleira> obterLista(){
+	public Collection<BalsaGraneleira> obterLista(){
 		return mapaBalsaGraneleira.values();
 	}
 }

@@ -67,7 +67,9 @@
 			</table>
 		</c:if>
 		
-		<a class="btn btn-primary" href="/balsagraneleira" role="button">Novo Cadastro</a>
+		<form action="/balsagraneleira" method="get">
+			<button type="submit">Novo Cadastro</button>
+		</form>
 		
 	</div>
 

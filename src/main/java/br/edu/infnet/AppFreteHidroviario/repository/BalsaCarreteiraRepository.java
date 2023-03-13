@@ -4,15 +4,18 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import br.edu.infnet.AppFreteHidroviario.model.domain.BalsaCarreteira;
 
+@Repository
 public class BalsaCarreteiraRepository {
 	
 	private static Integer frota = 1;
 	
 	private static Map<Integer, BalsaCarreteira> mapaBalsaCarreteira = new HashMap<Integer, BalsaCarreteira>();
 	
-	public static boolean incluir(BalsaCarreteira balsaCarreteira) {
+	public boolean incluir(BalsaCarreteira balsaCarreteira) {
 		
 		balsaCarreteira.setFrota(frota++);
 		
@@ -24,12 +27,12 @@ public class BalsaCarreteiraRepository {
 		}
 	}
 	
-	public static BalsaCarreteira excluir(Integer key) {
+	public BalsaCarreteira excluir(Integer key) {
 
 		return mapaBalsaCarreteira.remove(key);
 	}
 	
-	public static Collection<BalsaCarreteira> obterLista(){
+	public Collection<BalsaCarreteira> obterLista(){
 		return mapaBalsaCarreteira.values();
 	}
 }

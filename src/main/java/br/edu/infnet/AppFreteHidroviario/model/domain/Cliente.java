@@ -2,6 +2,7 @@ package br.edu.infnet.AppFreteHidroviario.model.domain;
 
 public class Cliente {
 	
+	private Integer id;																								
 	private String nome;
 	private String cpf;
 	private String email;
@@ -14,15 +15,7 @@ public class Cliente {
 	
 	@Override
 	public String toString() {
-
-		StringBuilder sb = new StringBuilder();
-		sb.append(nome);
-		sb.append(";");
-		sb.append(cpf);
-		sb.append(";");                         
-		sb.append(email);
-		
-		return super.toString();
+		return String.format("nome=%s, cpf= %s, email= %s", nome, cpf, email);
 	}
 
 	public String getNome() {
@@ -35,6 +28,14 @@ public class Cliente {
 
 	public String getEmail() {
 		return email; 
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	 
 }

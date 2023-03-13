@@ -1,0 +1,3 @@
+Paulo;paulo@email.com;13579
+Maria;maria@email.com;246810
+João;joao@email.com;102938

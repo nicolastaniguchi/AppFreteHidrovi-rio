@@ -7,10 +7,19 @@ public class BalsaGraneleira extends Embarcacoes {
 	private String modelo;
 	private boolean limpeza;
 	
-	public BalsaGraneleira(Integer frota, String nome, float valor, float comprimento, float largura, float altura) {
+	public BalsaGraneleira(Integer frota, String nome, float valor, float comprimento, float largura, float altura, boolean limpeza, String modelo, double capacidade) {
 		super(frota, nome, valor, comprimento, largura, altura);
+		this.capacidade = capacidade;
+		this.modelo = modelo;
+		this.limpeza = limpeza;
+		
 	}
 	
+	public BalsaGraneleira(String nome, String valor, String comprimento, String largura, String altura, String limpeza, String modelo, String capacidade) {
+		super(nome, valor, comprimento, largura, altura);
+		
+	}
+
 	private float valorLimpeza() {
 		return limpeza ? 10000 : 0;
 	}

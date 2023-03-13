@@ -6,10 +6,18 @@ public class Empurrador extends Embarcacoes {
 	private boolean rancho;
 	private int motor;
 	
-	public Empurrador(Integer frota, String nome, float valor, float comprimento, float largura, float altura) {
+	public Empurrador(Integer frota, String nome, float valor, float comprimento, float largura, float altura, boolean rancho, boolean tripulacao, int motor) {
 		super(frota, nome, valor, comprimento, largura, altura);
+		this.motor = motor;
+		this.tripulacao = tripulacao;
+		this.rancho = rancho;
 	}
 	
+	public Empurrador(String nome, String valor, String comprimento, String largura, String altura, String motor,
+			String tripulacao, String rancho) {
+		super(nome, valor, comprimento, largura, altura);
+	}
+
 	private float valorTripulacao() {
 		return tripulacao ? 30000 : 0;
 	}
