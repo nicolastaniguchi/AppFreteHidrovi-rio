@@ -49,19 +49,18 @@
 					name="qtdeFrotas" value="25" class="form-control">
 			</div>
 
-			<label>Serviço de Segurança:</label>
+			<label>Seguranças: </label>
 			<div class="form-check">
 				<input type="radio" class="form-check-input" id="radio1"
-					name="seguranças" value=true checked>Sim <label
+					name="segurancas" value=true checked>Sim <label
 					class="form-check-label" for="radio1"></label>
 			</div>
 
 			<div class="form-check">
 				<input type="radio" class="form-check-input" id="radio2"
-					name="seguranças" value=false>Não <label
+					name="segurancas" value=false>Não <label
 					class="form-check-label" for="radio2"></label>
 			</div>
-
 			<button type="submit" class="btn btn-primary">Cadastrar</button>
 		</form>
 	</div>

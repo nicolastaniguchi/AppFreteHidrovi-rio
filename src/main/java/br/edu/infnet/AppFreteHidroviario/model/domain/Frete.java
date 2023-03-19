@@ -5,31 +5,36 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class Frete {
-	
+
 	private String nomeDaEmbarcacao;
 	private String descricao;
 	private LocalDateTime data;
 	private Cliente cliente;
 	private List<Embarcacoes> embarcacoes;
-	
+
 	public Frete() {
 		data = LocalDateTime.now();
 	}
 	
+	public void imprimir() {
+		System.out.println("Frete: " + this);
+		System.out.println("Qtde de Embarcações: " + embarcacoes.size());
+		System.out.println("Solicitante: " + cliente);
+
+		
+	}
+
 	@Override
 	public String toString() {
-		
-	DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");	
-		
-	return String.format("Está retornando o nome da embarcação %s, sendo o %s, pedido em %s",
-				nomeDaEmbarcacao,
-				descricao, 
+
+	DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+
+	return String.format("Está retornando o %s, pedido em %s",
+				descricao,
 				data.format(formato)
 			);
-		
-//	return super.toString();
 	}
-	
+
 	public String getDescricao() {
 		return descricao;
 	}

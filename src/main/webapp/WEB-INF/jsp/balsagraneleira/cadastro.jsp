@@ -58,18 +58,17 @@
 				</select>
 			</div>
 
-			<div class="form-group">
-				<label>Serviço de Limpeza:</label>
-				<div class="form-check">
-					<input class="form-check-input" type="checkbox" value=""
-						id="flexCheckDefault"> <label class="form-check-label"
-						for="flexCheckDefault"> Sim </label>
-				</div>
-				<div class="form-check">
-					<input class="form-check-input" type="checkbox" value=""
-						id="flexCheckChecked" checked> <label
-						class="form-check-label" for="flexCheckChecked"> Não </label>
-				</div>
+			<label>Serviço de Limpeza: </label>
+			<div class="form-check">
+				<input type="radio" class="form-check-input" id="radio1"
+					name="limpeza" value=true checked>Sim <label
+					class="form-check-label" for="radio1"></label>
+			</div>
+
+			<div class="form-check">
+				<input type="radio" class="form-check-input" id="radio2"
+					name="limpeza" value=false>Não <label
+					class="form-check-label" for="radio2"></label>
 			</div>
 
 

@@ -13,15 +13,15 @@ public class BalsaCarreteiraService {
 
 	@Autowired
 	private BalsaCarreteiraRepository balsaCarreteiraRepository;
-	
+
 	public boolean incluir(BalsaCarreteira balsaCarreteira) {
 		return balsaCarreteiraRepository.incluir(balsaCarreteira);
 	}
-	
+
 	public BalsaCarreteira excluir(Integer key) {
 		return balsaCarreteiraRepository.excluir(key);
 	}
-	
+
 	public Collection<BalsaCarreteira> obterLista(){
 		return balsaCarreteiraRepository.obterLista();
 	}

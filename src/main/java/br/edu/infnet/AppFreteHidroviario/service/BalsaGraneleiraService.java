@@ -13,18 +13,18 @@ public class BalsaGraneleiraService {
 
 	@Autowired
 	private BalsaGraneleiraRepository balsaGraneleiraRepository;
-	
+
 	public boolean incluir(BalsaGraneleira balsaGraneleira) {
 		return balsaGraneleiraRepository.incluir(balsaGraneleira);
 	}
-	
+
 	public BalsaGraneleira excluir(Integer key) {
 		return balsaGraneleiraRepository.excluir(key);
 	}
-	
+
 	public Collection<BalsaGraneleira> obterLista(){
 		return balsaGraneleiraRepository.obterLista();
 	}
-	
-	
+
+
 }

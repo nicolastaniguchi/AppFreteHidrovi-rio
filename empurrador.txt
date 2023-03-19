@@ -1,3 +1,3 @@
-Titanic;1000;100;30;3;1;sim;nao
-Santa Maria;2000;80;20;2;2;nao;sim
-Black Pearl;3000;60;10;1;3;sim;nao
+Jujutsu;1000;100;30;3;true;true;1
+Naruto;2000;80;20;2;false;false;2
+Pokemon;3000;60;10;1;true;false;3

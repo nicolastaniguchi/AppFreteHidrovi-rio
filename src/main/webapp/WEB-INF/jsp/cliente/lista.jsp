@@ -40,6 +40,7 @@
 						<th>Nome</th>
 						<th>CPF</th>
 						<th>Email</th>
+						<th>Usuario</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -49,6 +50,7 @@
 							<td>${c.nome}</td>
 							<td>${c.cpf}</td>
 							<td>${c.email}</td>
+							<td>${c.usuario.nome}</td>
 							<td><a href="/cliente/${c.id}/excluir">excluir</a></td>
 						</tr>
 					</c:forEach>

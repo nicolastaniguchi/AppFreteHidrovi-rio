@@ -13,18 +13,16 @@ public class EmpurradorService {
 
 	@Autowired
 	private EmpurradorRepository empurradorRepository;
-	
+
 	public boolean incluir(Empurrador empurrador) {
 		return empurradorRepository.incluir(empurrador);
 	}
-	
+
 	public Empurrador excluir(Integer key) {
 		return empurradorRepository.excluir(key);
 	}
-	
+
 	public Collection<Empurrador> obterLista(){
 		return empurradorRepository.obterLista();
 	}
-	
-	
 }

@@ -24,7 +24,7 @@
 
 			<div class="form-group">
 				<label>CPF:</label> <input type="number" name="cpf"
-					value="123456888-55" class="form-control">
+					value="12345688855" class="form-control">
 			</div>
 
 			<div class="form-group">

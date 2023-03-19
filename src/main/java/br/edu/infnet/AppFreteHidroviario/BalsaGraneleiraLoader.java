@@ -37,7 +37,7 @@ public class BalsaGraneleiraLoader implements ApplicationRunner {
 
 					campos = linha.split(";");
 
-					BalsaGraneleira balsaGraneleira = new BalsaGraneleira(campos[0],campos[1],campos[2],campos[3],campos[4],campos[5],campos[6],campos[7]);
+					BalsaGraneleira balsaGraneleira = new BalsaGraneleira(campos[0], Float.valueOf(campos[1]), Float.valueOf(campos[2]), Float.valueOf(campos[3]), Float.valueOf(campos[4]),Boolean.valueOf(campos[5]), campos[6], Float.valueOf(campos[7]));
 
 					balsaGraneleiraService.incluir(balsaGraneleira);
 

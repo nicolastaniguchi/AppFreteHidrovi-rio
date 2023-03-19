@@ -8,19 +8,19 @@ import br.edu.infnet.AppFreteHidroviario.model.domain.Frete;
 
 @Controller
 public class FreteController {
-	
-	
-	@GetMapping(value = "/frete")	
+
+
+	@GetMapping(value = "/frete")
 	public String telaCadastro() {
-		
+
 		return "frete/cadastro";
-	
+
 	}
-	
+
 	@PostMapping(value = "/frete/incluir")
 	public String incluir(Frete frete) {
 		System.out.println("Inclusão realizada:" + frete);
-		
+
 		return "redirect:/";
 	}
 

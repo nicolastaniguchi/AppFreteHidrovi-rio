@@ -1,17 +1,15 @@
 package br.edu.infnet.AppFreteHidroviario;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.AppFreteHidroviario.model.domain.Usuario;
 import br.edu.infnet.AppFreteHidroviario.service.UsuarioService;
 
+@Order(1)
 @Component
 public class UsuarioLoader implements ApplicationRunner{
 
@@ -21,38 +19,18 @@ public class UsuarioLoader implements ApplicationRunner{
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 
-		try {
+		Usuario adminUser = new Usuario("Administrador Geral", "adminuser@email.com", "001100");
 
-			String arq = "usuario.txt";
+		usuarioService.incluir(adminUser);
 
-			try {
+		System.out.println("O usuario " + adminUser.getNome() + " foi incluído com sucesso!");
 
-				FileReader fileR = new FileReader(arq);
-				BufferedReader leitura = new BufferedReader(fileR);
+		for (int i = 0; i < 9; i++) {
+			Usuario usuario = new Usuario("Administrador " + i, "ad"+i+"@email.com", "00"+i);
 
-				String linha = leitura.readLine();
-				String[] campos = null;
+			usuarioService.incluir(usuario);
 
-				while (linha != null) {
-
-					campos = linha.split(";");
-
-					Usuario usuario = new Usuario(campos[0], campos[1], campos[2]);
-
-					usuarioService.incluir(usuario);
-
-					System.out.println("Usuário: " + usuario.getNome() + ", incluido!");
-
-					linha = leitura.readLine();
-				}
-
-				leitura.close();
-				fileR.close();
-			} catch (IOException e) {
-				System.out.println("[ERRO]" + e.getMessage());
-			}
-		} finally {
-			System.out.println("Realizado com sucesso!");
+			System.out.println("O usuario " + usuario.getNome() + " foi incluído com sucesso!");
 		}
 	}
 }

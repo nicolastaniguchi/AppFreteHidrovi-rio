@@ -1,4 +1,4 @@
-/*package br.edu.infnet.AppFreteHidroviario;
+package br.edu.infnet.AppFreteHidroviario;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -23,7 +23,7 @@ public class BalsaCarreteiraLoader implements ApplicationRunner {
 
 		try {
 
-			String arq = ".txt";
+			String arq = "balsacarreteira.txt";
 
 			try {
 
@@ -37,7 +37,7 @@ public class BalsaCarreteiraLoader implements ApplicationRunner {
 
 					campos = linha.split(";");
 
-					BalsaCarreteira balsaCarreteira = new BalsaCarreteira(campos[0], campos[1], campos[2], campos[3], campos[4], campos[5]);
+					BalsaCarreteira balsaCarreteira = new BalsaCarreteira(campos[0], Float.valueOf(campos[1]), Float.valueOf(campos[2]), Float.valueOf(campos[3]), Float.valueOf(campos[4]), Integer.valueOf(campos[5]), Boolean.valueOf(campos[6]));
 
 					balsaCarreteiraService.incluir(balsaCarreteira);
 
@@ -56,4 +56,3 @@ public class BalsaCarreteiraLoader implements ApplicationRunner {
 		}
 	}
 }
-*/			

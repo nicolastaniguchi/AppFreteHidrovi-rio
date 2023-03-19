@@ -5,16 +5,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class AppController {
-	
-	@GetMapping(value = "/")	
+
+	@GetMapping(value = "/")
 	public String telaIndex() {
-		
+
 		return "index";
 	}
-	
-	@GetMapping(value = "/home")	
+
+	@GetMapping(value = "/home")
 	public String telaHome() {
-		
+
 		return "index";
 	}
 }

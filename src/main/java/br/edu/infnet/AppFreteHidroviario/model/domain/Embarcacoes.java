@@ -1,29 +1,33 @@
 package br.edu.infnet.AppFreteHidroviario.model.domain;
 
 public abstract class Embarcacoes {
-	
+
 	private Integer frota;
 	private String nome;
 	private float valor;
 	private float comprimento;
 	private float largura;
 	private float altura;
-	
+
 	public Embarcacoes(Integer frota, String nome, float valor, float comprimento, float largura, float altura) {
 		this.frota = frota;
+		this.nome = nome;
+		this.valor = valor;
+		this.comprimento = comprimento;
+		this.largura = largura; 
+		this.altura = altura;
+	}
+	
+	public Embarcacoes(String nome, float valor, float comprimento, float largura, float altura) {
 		this.nome = nome;
 		this.valor = valor;
 		this.comprimento = comprimento;
 		this.largura = largura;
 		this.altura = altura;
 	}
-
-	public Embarcacoes(String nome, String valor, String comprimento, String largura, String altura) {
-		
-	}
-
-	public abstract float calcularValorFrete();
 	
+	public abstract float calcularValorFrete();
+
 	@Override
 	public String toString() {
 
@@ -37,10 +41,10 @@ public abstract class Embarcacoes {
 		sb.append(";");
 		sb.append(comprimento);
 		sb.append(";");
-		sb.append(largura);	
+		sb.append(largura);
 		sb.append(";");
 		sb.append(altura);
-		
+
 		return sb.toString();
 	}
 
@@ -91,6 +95,6 @@ public abstract class Embarcacoes {
 	public void setAltura(float altura) {
 		this.altura = altura;
 	}
-	
-	
+
+
 }
