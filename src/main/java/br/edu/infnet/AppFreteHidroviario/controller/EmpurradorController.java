@@ -6,8 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.AppFreteHidroviario.model.domain.Empurrador;
+import br.edu.infnet.AppFreteHidroviario.model.domain.Usuario;
 import br.edu.infnet.AppFreteHidroviario.service.EmpurradorService;
 
 @Controller
@@ -25,9 +27,9 @@ public class EmpurradorController {
 	}
 
 	@GetMapping(value = "/empurrador/lista")
-	public String telaLista(Model model) {
+	public String telaLista(Model model, @SessionAttribute("usuario") Usuario usuario) {
 
-		model.addAttribute("empurrador", empurradorService.obterLista());
+		model.addAttribute("empurrador", empurradorService.obterLista(usuario));
 
 		model.addAttribute("mensagem", msg);
 
@@ -38,24 +40,27 @@ public class EmpurradorController {
 	}
 
 	@PostMapping(value = "/empurrador/incluire")
-	public String incluirEmpurrador(Empurrador empurrador) {
+	public String incluirEmpurrador(Empurrador empurrador, @SessionAttribute("usuario") Usuario usuario) {
+
+		empurrador.setUsuario(usuario);
 
 		empurradorService.incluir(empurrador);
 
-		msg = "A inclusão da embarcação " + empurrador.getNome() +" foi realizada com sucesso!";
+		msg = "A inclusão da embarcação " + empurrador.getNome() + " foi realizada com sucesso!";
 
 		return "redirect:/empurrador/lista";
 	}
 
-	@GetMapping(value = "/empurrador/{frota}/excluir")
-	public String excluir(@PathVariable Integer frota) {
+	@GetMapping(value = "/empurrador/{id}/excluir")
+	public String excluir(@PathVariable Integer id) {
 
-		Empurrador empurrador  = empurradorService.excluir(frota);
+		Empurrador empurrador = empurradorService.obterId(id);
 
-		msg = "A exclusão da embarcação " + empurrador.getNome() +" foi realizada com sucesso!";
+		empurradorService.excluir(id);
+
+		msg = "A exclusão da embarcação "+ empurrador.getNome() +" foi realizada com sucesso!";
 
 		return "redirect:/empurrador/lista";
 	}
-
 
 }

@@ -20,6 +20,11 @@
 			<h3>Cadastro de Empurrador</h3>
 
 			<div class="form-group">
+				<label>Frota:</label> <input type="text" name="frota" value="001"
+					class="form-control">
+			</div>
+
+			<div class="form-group">
 				<label>Nome da Embarcação:</label> <input type="text" name="nome"
 					value="Yamato" class="form-control">
 			</div>
@@ -44,36 +49,40 @@
 					value="2" class="form-control">
 			</div>
 
-			<label>Tripulação: </label>
-			<div class="form-check">
-				<input type="radio" class="form-check-input" id="radio1"
-					name="tripulacao" value=true checked>Sim <label
-					class="form-check-label" for="radio1"></label>
-			</div>
+			<div class="form-group">
+				<label>Tripulação: </label>
+				<div class="form-check">
+					<input type="radio" class="form-check-input" id="radio1"
+						name="tripulacao" value="true" checked>Sim <label
+						class="form-check-label" for="radio1"></label>
+				</div>
 
-			<div class="form-check">
-				<input type="radio" class="form-check-input" id="radio2"
-					name="tripulacao" value=false>Não <label
-					class="form-check-label" for="radio2"></label>
+				<div class="form-check">
+					<input type="radio" class="form-check-input" id="radio2"
+						name="tripulacao" value="false">Não <label
+						class="form-check-label" for="radio2"></label>
+				</div>
 			</div>
+			
+			<div class="form-group">
+				<label>Rancho: </label>
+				<div class="form-check">
+					<input type="radio" class="form-check-input" id="radio1"
+						name="rancho" value="true" checked>Sim <label
+						class="form-check-label" for="radio1"></label>
+				</div>
 
-			<label>Rancho: </label>
-			<div class="form-check">
-				<input type="radio" class="form-check-input" id="radio1"
-					name="rancho" value=true checked>Sim <label
-					class="form-check-label" for="radio1"></label>
-			</div>
-
-			<div class="form-check">
-				<input type="radio" class="form-check-input" id="radio2"
-					name="rancho" value=false>Não <label
-					class="form-check-label" for="radio2"></label>
+				<div class="form-check">
+					<input type="radio" class="form-check-input" id="radio2"
+						name="rancho" value="false">Não <label
+						class="form-check-label" for="radio2"></label>
+				</div>
 			</div>
 
 			<div class="form-group">
 				<label>Quantidade de Motores:</label> <input type="number"
 					name="motor" value="25" class="form-control">
-			</div> 
+			</div>
 
 			<button type="submit" class="btn btn-primary">Cadastrar</button>
 		</form>

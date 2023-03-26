@@ -1,38 +1,16 @@
 package br.edu.infnet.AppFreteHidroviario.repository;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import br.edu.infnet.AppFreteHidroviario.model.domain.Empurrador;
 
 @Repository
-public class EmpurradorRepository {
+public interface EmpurradorRepository extends CrudRepository<Empurrador, Integer>{
 
-	private static Integer frota = 1;
-
-	private static Map<Integer, Empurrador> mapaEmpurrador = new HashMap<>();
-
-	public boolean incluir(Empurrador empurrador) {
-
-		empurrador.setFrota(frota++);
-
-		try {
-			mapaEmpurrador.put(empurrador.getFrota(), empurrador);
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
-	}
-
-	public Empurrador excluir(Integer key) {
-
-		return mapaEmpurrador.remove(key);
-	}
-
-	public Collection<Empurrador> obterLista(){
-		return mapaEmpurrador.values();
-	}
+	@Query("from Empurrador e where e.usuario.id = :userId")
+	List<Empurrador> obterLista(Integer userId);
 }

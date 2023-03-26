@@ -1,13 +1,22 @@
 package br.edu.infnet.AppFreteHidroviario.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "TBalsaGraneleira")
 public class BalsaGraneleira extends Embarcacoes {
 
 	private float capacidade;
 	private String modelo;
 	private boolean limpeza;
+	
+	public BalsaGraneleira() {
+		
+	}
 
-	public BalsaGraneleira(String nome, float valor, float comprimento, float largura, float altura, boolean limpeza, String modelo, float capacidade) {
-		super(nome, valor, comprimento, largura, altura);
+	public BalsaGraneleira(String frota, String nome, float valor, float comprimento, float largura, float altura, boolean limpeza, String modelo, float capacidade) {
+		super(frota, nome, valor, comprimento, largura, altura);
 		this.limpeza = limpeza;
 		this.modelo = modelo;
 		this.capacidade = capacidade;

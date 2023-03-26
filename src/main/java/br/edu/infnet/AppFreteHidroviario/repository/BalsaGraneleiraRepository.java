@@ -1,38 +1,16 @@
 package br.edu.infnet.AppFreteHidroviario.repository;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import br.edu.infnet.AppFreteHidroviario.model.domain.BalsaGraneleira;
 
 @Repository
-public class BalsaGraneleiraRepository {
+public interface BalsaGraneleiraRepository extends CrudRepository<BalsaGraneleira, Integer>{
 
-	private static Integer frota = 1;
-
-	private static Map<Integer, BalsaGraneleira> mapaBalsaGraneleira = new HashMap<>();
-
-	public boolean incluir(BalsaGraneleira balsaGraneleira) {
-
-		balsaGraneleira.setFrota(frota++);
-
-		try {
-			mapaBalsaGraneleira.put(balsaGraneleira.getFrota(), balsaGraneleira);
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
-	}
-
-	public BalsaGraneleira excluir(Integer key) {
-
-		return mapaBalsaGraneleira.remove(key);
-	}
-
-	public Collection<BalsaGraneleira> obterLista(){
-		return mapaBalsaGraneleira.values();
-	}
+	@Query("from BalsaGraneleira b where b.usuario.id = :userId")
+	List<BalsaGraneleira> obterLista(Integer userId);
 }

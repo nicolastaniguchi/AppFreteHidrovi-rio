@@ -1,18 +1,27 @@
 package br.edu.infnet.AppFreteHidroviario.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "TEmpurrador")
 public class Empurrador extends Embarcacoes {
 
 	private boolean tripulacao;
 	private boolean rancho;
 	private Integer motor;
 
-	public Empurrador(String nome, float valor, float comprimento, float largura, float altura, boolean rancho, boolean tripulacao, Integer motor) {
-		super(nome, valor, comprimento, largura, altura);
+	public Empurrador() {
+
+	}
+
+	public Empurrador(String frota, String nome, float valor, float comprimento, float largura, float altura, boolean rancho, boolean tripulacao, Integer motor) {
+		super(frota, nome, valor, comprimento, largura, altura);
 		this.rancho = rancho;
 		this.tripulacao = tripulacao;
 		this.motor = motor;
 	}
-	
+
 	private float valorTripulacao() {
 		return tripulacao ? 30000 : 0;
 	}

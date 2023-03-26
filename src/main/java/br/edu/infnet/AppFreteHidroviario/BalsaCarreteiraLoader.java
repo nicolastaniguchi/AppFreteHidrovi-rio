@@ -7,11 +7,14 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.AppFreteHidroviario.model.domain.BalsaCarreteira;
+import br.edu.infnet.AppFreteHidroviario.model.domain.Usuario;
 import br.edu.infnet.AppFreteHidroviario.service.BalsaCarreteiraService;
 
+@Order(4)
 @Component
 public class BalsaCarreteiraLoader implements ApplicationRunner {
 
@@ -36,9 +39,15 @@ public class BalsaCarreteiraLoader implements ApplicationRunner {
 				while (linha != null) {
 
 					campos = linha.split(";");
+					
+					Usuario usuario = new Usuario();
 
-					BalsaCarreteira balsaCarreteira = new BalsaCarreteira(campos[0], Float.valueOf(campos[1]), Float.valueOf(campos[2]), Float.valueOf(campos[3]), Float.valueOf(campos[4]), Integer.valueOf(campos[5]), Boolean.valueOf(campos[6]));
+					usuario.setId(1);
 
+					BalsaCarreteira balsaCarreteira = new BalsaCarreteira(campos[0], campos[1], Float.valueOf(campos[2]), Float.valueOf(campos[3]), Float.valueOf(campos[4]), Float.valueOf(campos[5]), Integer.valueOf(campos[6]), Boolean.valueOf(campos[7]));
+
+					balsaCarreteira.setUsuario(usuario);
+					
 					balsaCarreteiraService.incluir(balsaCarreteira);
 
 					System.out.println("Balsa Carreteira: " + balsaCarreteira.getNome() + ", incluido!");

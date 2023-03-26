@@ -40,6 +40,7 @@
 			<table class="table table-striped">
 				<thead>
 					<tr>
+						<th>ID</th>
 						<th>Frota</th>
 						<th>Nome</th>
 						<th>Valor</th>
@@ -53,6 +54,7 @@
 				<tbody>
 					<c:forEach var="bc" items="${balsaCarreteira}">
 						<tr>
+							<td>${bc.id}</td>
 							<td>${bc.frota}</td>
 							<td>${bc.nome}</td>
 							<td>${bc.valor}</td>
@@ -61,7 +63,7 @@
 							<td>${bc.altura}</td>
 							<td>${bc.qtdeFrotas}</td>
 							<td>${bc.segurancas}</td>
-							<td><a href="/balsacarreteira/${bc.frota}/excluir">excluir</a></td>
+							<td><a href="/balsacarreteira/${bc.id}/excluir">excluir</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

@@ -41,7 +41,7 @@ public class ClienteLoader implements ApplicationRunner {
 					campos = linha.split(";");
 
 					Usuario usuario = new Usuario();
-					
+
 					usuario.setId(1);
 
 					Cliente cliente = new Cliente(campos[0], campos[1], campos[2]);

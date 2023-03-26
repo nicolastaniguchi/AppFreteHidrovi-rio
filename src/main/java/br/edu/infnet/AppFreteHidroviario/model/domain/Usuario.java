@@ -23,6 +23,12 @@ public class Usuario {
 	@OneToMany
 	@JoinColumn(name = "idUsuario")
 	private List<Cliente> cliente;
+	@OneToMany
+	@JoinColumn(name = "idUsuario")
+	private List<Embarcacoes> embarcacoes;
+	@OneToMany
+	@JoinColumn(name = "idUsuario")
+	private List<Frete> frete;
 
 	public Usuario() {
 	}
@@ -77,4 +83,21 @@ public class Usuario {
 	public void setClientes(List<Cliente> cliente) {
 		this.cliente = cliente;
 	}
+
+	public List<Embarcacoes> getEmbarcacoes() {
+		return embarcacoes;
+	}
+
+	public void setEmbarcacoes(List<Embarcacoes> embarcacoes) {
+		this.embarcacoes = embarcacoes;
+	}
+
+	public List<Frete> getFrete() {
+		return frete;
+	}
+
+	public void setFrete(List<Frete> frete) {
+		this.frete = frete;
+	}
+	
 }

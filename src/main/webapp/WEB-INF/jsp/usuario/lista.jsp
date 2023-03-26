@@ -41,6 +41,7 @@
 						<th>E-mail</th>
 						<th>Senha</th>
 						<th>Qtde de Clientes</th>
+						<th>Qtde de Embarcacoes</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -51,6 +52,7 @@
 							<td>${u.email}</td>
 							<td>${u.senha}</td>
 							<td>${u.clientes.size()}</td>
+							<td>${u.embarcacoes.size()}</td>
 							<td><a href="/usuario/${u.id}/excluir">excluir</a></td>
 						</tr>
 					</c:forEach>

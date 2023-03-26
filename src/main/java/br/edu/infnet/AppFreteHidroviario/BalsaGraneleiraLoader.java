@@ -7,11 +7,14 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.AppFreteHidroviario.model.domain.BalsaGraneleira;
+import br.edu.infnet.AppFreteHidroviario.model.domain.Usuario;
 import br.edu.infnet.AppFreteHidroviario.service.BalsaGraneleiraService;
 
+@Order(5)
 @Component
 public class BalsaGraneleiraLoader implements ApplicationRunner {
 
@@ -36,9 +39,15 @@ public class BalsaGraneleiraLoader implements ApplicationRunner {
 				while (linha != null) {
 
 					campos = linha.split(";");
+					
+					Usuario usuario = new Usuario();
 
-					BalsaGraneleira balsaGraneleira = new BalsaGraneleira(campos[0], Float.valueOf(campos[1]), Float.valueOf(campos[2]), Float.valueOf(campos[3]), Float.valueOf(campos[4]),Boolean.valueOf(campos[5]), campos[6], Float.valueOf(campos[7]));
+					usuario.setId(1);
 
+					BalsaGraneleira balsaGraneleira = new BalsaGraneleira(campos[0], campos[1], Float.valueOf(campos[2]), Float.valueOf(campos[3]), Float.valueOf(campos[4]), Float.valueOf(campos[5]),Boolean.valueOf(campos[6]), campos[7], Float.valueOf(campos[8]));
+					
+					balsaGraneleira.setUsuario(usuario);
+					
 					balsaGraneleiraService.incluir(balsaGraneleira);
 
 					System.out.println("Balsa Graneleira: " + balsaGraneleira.getNome() + ", incluido!");

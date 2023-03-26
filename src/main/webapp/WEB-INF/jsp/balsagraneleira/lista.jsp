@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <meta charset="ISO-8859-1">
 <title>Lista - Balsas Graneleira</title>
 </head>
@@ -31,18 +32,20 @@
 		</c:if>
 
 		<c:if test="${not empty balsaGraneleira}">
-			<h4>Quantidade de balsas graneleiras cadastradas: ${balsaCarreteira.size()}</h4>
+			<h4>Quantidade de balsas graneleiras cadastradas:
+				${balsaGraneleira.size()}</h4>
 
 
 			<table class="table table-striped">
 				<thead>
 					<tr>
+						<th>ID</th>
 						<th>Frota</th>
 						<th>Nome</th>
 						<th>Valor</th>
 						<th>Comprimento(m)</th>
 						<th>Largura(m)</th>
-						<th>Altura(m)</th>						
+						<th>Altura(m)</th>
 						<th>Capacidade</th>
 						<th>Modelo</th>
 						<th>Serviço de Limpeza</th>
@@ -51,6 +54,7 @@
 				<tbody>
 					<c:forEach var="bg" items="${balsaGraneleira}">
 						<tr>
+							<td>${bg.id}</td>
 							<td>${bg.frota}</td>
 							<td>${bg.nome}</td>
 							<td>${bg.valor}</td>
@@ -60,17 +64,17 @@
 							<td>${bg.capacidade}</td>
 							<td>${bg.modelo}</td>
 							<td>${bg.limpeza}</td>
-							<td><a href="/balsagraneleira/${bg.frota}/excluir">excluir</a></td>
+							<td><a href="/balsagraneleira/${bg.id}/excluir">excluir</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</c:if>
-		
+
 		<form action="/balsagraneleira" method="get">
 			<button type="submit">Novo Cadastro</button>
 		</form>
-		
+
 	</div>
 
 </body>

@@ -32,7 +32,7 @@ public class AcessoController {
 		Usuario user = new Usuario(email, senha);
 
 		user = usuarioService.autenticar(user);
-		
+
 		if(user != null) {
 
 			model.addAttribute("usuario", user);

@@ -6,8 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.AppFreteHidroviario.model.domain.BalsaCarreteira;
+import br.edu.infnet.AppFreteHidroviario.model.domain.Usuario;
 import br.edu.infnet.AppFreteHidroviario.service.BalsaCarreteiraService;
 
 @Controller
@@ -20,14 +22,14 @@ public class BalsaCarreteiraController {
 
 	@GetMapping(value = "/balsacarreteira")
 	public String telaCadastro() {
-		
+
 		return "balsacarreteira/cadastro";
 	}
 
 	@GetMapping(value = "/balsacarreteira/lista")
-	public String telaLista(Model model) {
+	public String telaLista(Model model, @SessionAttribute("usuario") Usuario usuario) {
 
-		model.addAttribute("balsaCarreteira", balsaCarreteiraService.obterLista());
+		model.addAttribute("balsaCarreteira", balsaCarreteiraService.obterLista(usuario));
 
 		model.addAttribute("mensagem", msg);
 
@@ -38,24 +40,28 @@ public class BalsaCarreteiraController {
 	}
 
 	@PostMapping(value = "/balsacarreteira/incluirbc")
-	public String incluirBalsaCarreteira(BalsaCarreteira balsacarreteira) {
+	public String incluirBalsaCarreteira(BalsaCarreteira balsaCarreteira,
+			@SessionAttribute("usuario") Usuario usuario) {
 
-		balsaCarreteiraService.incluir(balsacarreteira);
+		balsaCarreteira.setUsuario(usuario);
 
-		msg = "A inclusão da embarcação " + balsacarreteira.getNome() +" foi realizada com sucesso!";
+		balsaCarreteiraService.incluir(balsaCarreteira);
 
-		return "redirect:/balsacarreteira/lista";
-	}
-
-	@GetMapping(value = "/balsacarreteira/{frota}/excluir")
-	public String excluir(@PathVariable Integer frota) {
-
-		BalsaCarreteira balsacarreteira  = balsaCarreteiraService.excluir(frota);
-
-		msg = "A exclusão da embarcação " + balsacarreteira.getNome() +" foi realizada com sucesso!";
+		msg = "A inclusão da embarcação " + balsaCarreteira.getNome() + " foi realizada com sucesso!";
 
 		return "redirect:/balsacarreteira/lista";
 	}
 
+	@GetMapping(value = "/balsacarreteira/{id}/excluir")
+	public String excluir(@PathVariable Integer id) {
+
+		BalsaCarreteira balsacarreteira = balsaCarreteiraService.obterId(id);
+
+		balsaCarreteiraService.excluir(id);
+
+		msg = "A exclusão da embarcação " + balsacarreteira.getNome() + " foi realizada com sucesso!";
+
+		return "redirect:/balsacarreteira/lista";
+	}
 
 }

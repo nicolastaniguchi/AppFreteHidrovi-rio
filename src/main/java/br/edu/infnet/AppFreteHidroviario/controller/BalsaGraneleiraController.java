@@ -6,8 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.AppFreteHidroviario.model.domain.BalsaGraneleira;
+import br.edu.infnet.AppFreteHidroviario.model.domain.Usuario;
 import br.edu.infnet.AppFreteHidroviario.service.BalsaGraneleiraService;
 
 @Controller
@@ -27,9 +29,9 @@ public class BalsaGraneleiraController {
 	}
 
 	@GetMapping(value = "/balsagraneleira/lista")
-	public String telaLista(Model model) {
+	public String telaLista(Model model, @SessionAttribute("usuario") Usuario usuario) {
 
-		model.addAttribute("balsaGraneleira", balsaGraneleiraService.obterLista());
+		model.addAttribute("balsaGraneleira", balsaGraneleiraService.obterLista(usuario));
 
 		model.addAttribute("mensagem", msg);
 
@@ -40,19 +42,23 @@ public class BalsaGraneleiraController {
 	}
 
 	@PostMapping(value = "/balsagraneleira/incluirbg")
-	public String incluirBalsaGraneleira(BalsaGraneleira balsagraneleira) {
+	public String incluirBalsaGraneleira(BalsaGraneleira balsaGraneleira, @SessionAttribute("usuario") Usuario usuario) {
+		
+		balsaGraneleira.setUsuario(usuario);
+		
+		balsaGraneleiraService.incluir(balsaGraneleira);
 
-		balsaGraneleiraService.incluir(balsagraneleira);
-
-		msg = "A inclusão da embarcação " + balsagraneleira.getNome() +" foi realizada com sucesso!";
+		msg = "A inclusão da embarcação " + balsaGraneleira.getNome() +" foi realizada com sucesso!";
 
 		return "redirect:/balsagraneleira/lista";
 	}
 
-	@GetMapping(value = "/balsagraneleira/{frota}/excluir")
-	public String excluir(@PathVariable Integer frota) {
+	@GetMapping(value = "/balsagraneleira/{id}/excluir")
+	public String excluir(@PathVariable Integer id) {
 
-		BalsaGraneleira balsagraneleira  = balsaGraneleiraService.excluir(frota);
+		BalsaGraneleira balsagraneleira  = balsaGraneleiraService.obterId(id);
+				
+		balsaGraneleiraService.excluir(id);
 
 		msg = "A exclusão da embarcação " + balsagraneleira.getNome() +" foi realizada com sucesso!";
 

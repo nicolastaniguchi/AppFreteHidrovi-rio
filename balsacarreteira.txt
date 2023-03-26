@@ -1,3 +1,3 @@
-Titanic;1000;100;30;3;45;nao
-Santa Maria;2000;80;20;2;35;sim
-Black Pearl;3000;60;10;1;25;sim
+004;Titanic;1000;100;30;3;45;false
+005;Santa Maria;2000;80;20;2;35;true
+006;Black Pearl;3000;60;10;1;25;true

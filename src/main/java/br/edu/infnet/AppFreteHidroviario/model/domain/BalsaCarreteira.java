@@ -1,13 +1,22 @@
 package br.edu.infnet.AppFreteHidroviario.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "TBalsaCarreteira")
 public class BalsaCarreteira extends Embarcacoes {
 
 	private Integer qtdeFrotas;
 	private boolean segurancas;
+	
+	public BalsaCarreteira () {
+		
+	}
 
-	public BalsaCarreteira(String nome, float valor, float comprimento, float largura, float altura, Integer qtdeFrotas,
+	public BalsaCarreteira(String frota, String nome, float valor, float comprimento, float largura, float altura, Integer qtdeFrotas,
 			boolean segurancas) {
-		super(nome, valor, comprimento, largura, altura);
+		super(frota, nome, valor, comprimento, largura, altura);
 		this.qtdeFrotas = qtdeFrotas;
 		this.segurancas = segurancas;
 	}

@@ -41,7 +41,7 @@ public class ClienteController {
 
 	@PostMapping(value = "/cliente/incluir")
 	public String incluir(Cliente cliente, @SessionAttribute("usuario") Usuario usuario) {
-		
+
 		cliente.setUsuario(usuario);
 
 		clienteService.incluir(cliente);

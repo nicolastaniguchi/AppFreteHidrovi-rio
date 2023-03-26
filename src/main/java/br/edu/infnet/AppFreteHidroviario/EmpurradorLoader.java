@@ -7,11 +7,14 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.AppFreteHidroviario.model.domain.Empurrador;
+import br.edu.infnet.AppFreteHidroviario.model.domain.Usuario;
 import br.edu.infnet.AppFreteHidroviario.service.EmpurradorService;
 
+@Order(3)
 @Component
 public class EmpurradorLoader implements ApplicationRunner {
 
@@ -37,7 +40,13 @@ public class EmpurradorLoader implements ApplicationRunner {
 
 					campos = linha.split(";");
 
-					Empurrador empurrador = new Empurrador(campos[0], Float.valueOf(campos[1]), Float.valueOf(campos[2]), Float.valueOf(campos[3]), Float.valueOf(campos[4]), Boolean.valueOf(campos[5]), Boolean.valueOf(campos[6]), Integer.valueOf(campos[7]));
+					Usuario usuario = new Usuario();
+
+					usuario.setId(1);
+
+					Empurrador empurrador = new Empurrador(campos[0], campos[1], Float.valueOf(campos[2]), Float.valueOf(campos[3]), Float.valueOf(campos[4]), Float.valueOf(campos[5]), Boolean.valueOf(campos[6]), Boolean.valueOf(campos[7]), Integer.valueOf(campos[8]));
+
+					empurrador.setUsuario(usuario);
 
 					empurradorService.incluir(empurrador);
 

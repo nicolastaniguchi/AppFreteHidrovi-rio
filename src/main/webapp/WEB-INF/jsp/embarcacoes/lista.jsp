@@ -7,15 +7,15 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <meta charset="ISO-8859-1">
-<title>Lista - Fretes</title>
+<title>Lista - Embarcacoes</title>
 </head>
 <body>
 	<c:import url="/WEB-INF/jsp/menu.jsp" />
 
 	<div class="container">
 
-		<form action="/frete" method="get">
-			<h3>Lista - Fretes</h3>
+		<form action="/empurrador" method="get">
+			<h3>Lista - Embarcacoes</h3>
 
 			<c:if test="${not empty mensagem}">
 				<div class="alert alert-success">
@@ -25,42 +25,42 @@
 
 		</form>
 
-		<c:if test="${empty frete}">
-			<h4>Não existem fretes cadastrados!</h4>
+		<c:if test="${empty embarcacoes}">
+			<h4>Não existem embarcacoes cadastradas!</h4>
 		</c:if>
 
-		<c:if test="${not empty frete}">
-			<h4>Quantidade de fretes cadastrados: ${frete.size()}</h4>
+		<c:if test="${not empty embarcacoes}">
+			<h4>Quantidade de embarcacoes cadastradas: ${embarcacoes.size()}</h4>
 
 
 			<table class="table table-striped">
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Descricao</th>
-						<th>Data</th>
-						<th>Cliente</th>
-						<th>Embarcacoes</th>
+						<th>Frota</th>
+						<th>Nome</th>
+						<th>Valor</th>
+						<th>Comprimento(m)</th>
+						<th>Largura(m)</th>
+						<th>Altura(m)</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="f" items="${frete}">
+					<c:forEach var="eb" items="${embarcacoes}">
 						<tr>
-							<td>${f.id}</td>
-							<td>${f.descricao}</td>
-							<td>${f.data}</td>
-							<td>${f.cliente.nome}</td>
-							<td>${f.embarcacoes.size()}</td>
-							<td><a href="/frete/${f.id}/excluir">excluir</a></td>
+							<td>${eb.id}</td>
+							<td>${eb.frota}</td>
+							<td>${eb.nome}</td>
+							<td>${eb.valor}</td>
+							<td>${eb.comprimento}</td>
+							<td>${eb.largura}</td>
+							<td>${eb.altura}</td>
+							<td><a href="/embarcacoes/${eb.id}/excluir">excluir</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</c:if>
-
-		<form action="/frete" method="get">
-			<button type="submit">Novo Cadastro</button>
-		</form>
 
 	</div>
 
