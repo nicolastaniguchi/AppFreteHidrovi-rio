@@ -57,9 +57,14 @@ public class BalsaCarreteiraController {
 
 		BalsaCarreteira balsacarreteira = balsaCarreteiraService.obterId(id);
 
-		balsaCarreteiraService.excluir(id);
+		try {
+			balsaCarreteiraService.excluir(id);
 
-		msg = "A exclusão da embarcação " + balsacarreteira.getNome() + " foi realizada com sucesso!";
+			msg = "A exclusão da embarcação " + balsacarreteira.getNome() + " foi realizada com sucesso!";
+
+		} catch (Exception e) {
+			msg = "Não é possível realizar a exclusão da balsa carreteira: " + balsacarreteira.getNome();
+		}
 
 		return "redirect:/balsacarreteira/lista";
 	}

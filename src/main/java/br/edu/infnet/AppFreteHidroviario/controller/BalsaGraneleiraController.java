@@ -20,7 +20,6 @@ public class BalsaGraneleiraController {
 
 	private String msg;
 
-
 	@GetMapping(value = "/balsagraneleira")
 	public String telaCadastro() {
 
@@ -42,13 +41,14 @@ public class BalsaGraneleiraController {
 	}
 
 	@PostMapping(value = "/balsagraneleira/incluirbg")
-	public String incluirBalsaGraneleira(BalsaGraneleira balsaGraneleira, @SessionAttribute("usuario") Usuario usuario) {
-		
+	public String incluirBalsaGraneleira(BalsaGraneleira balsaGraneleira,
+			@SessionAttribute("usuario") Usuario usuario) {
+
 		balsaGraneleira.setUsuario(usuario);
-		
+
 		balsaGraneleiraService.incluir(balsaGraneleira);
 
-		msg = "A inclusão da embarcação " + balsaGraneleira.getNome() +" foi realizada com sucesso!";
+		msg = "A inclusão da embarcação " + balsaGraneleira.getNome() + " foi realizada com sucesso!";
 
 		return "redirect:/balsagraneleira/lista";
 	}
@@ -56,11 +56,17 @@ public class BalsaGraneleiraController {
 	@GetMapping(value = "/balsagraneleira/{id}/excluir")
 	public String excluir(@PathVariable Integer id) {
 
-		BalsaGraneleira balsagraneleira  = balsaGraneleiraService.obterId(id);
-				
-		balsaGraneleiraService.excluir(id);
+		BalsaGraneleira balsagraneleira = balsaGraneleiraService.obterId(id);
 
-		msg = "A exclusão da embarcação " + balsagraneleira.getNome() +" foi realizada com sucesso!";
+		try {
+
+			balsaGraneleiraService.excluir(id);
+
+			msg = "A exclusão da embarcação " + balsagraneleira.getNome() + " foi realizada com sucesso!";
+
+		} catch (Exception e) {
+			msg = "Não é possível realizar a exclusão da balsa graneleira: " + balsagraneleira.getNome();
+		}
 
 		return "redirect:/balsagraneleira/lista";
 	}

@@ -55,10 +55,16 @@ public class EmpurradorController {
 	public String excluir(@PathVariable Integer id) {
 
 		Empurrador empurrador = empurradorService.obterId(id);
+		
+		try {
 
-		empurradorService.excluir(id);
+			empurradorService.excluir(id);
 
-		msg = "A exclusão da embarcação "+ empurrador.getNome() +" foi realizada com sucesso!";
+			msg = "A exclusão da embarcação "+ empurrador.getNome() +" foi realizada com sucesso!";
+
+		} catch (Exception e) {
+			msg = "Não é possível realizar a exclusão do empurrador: " + empurrador.getNome();
+		}
 
 		return "redirect:/empurrador/lista";
 	}

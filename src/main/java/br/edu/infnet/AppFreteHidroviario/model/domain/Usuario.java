@@ -2,12 +2,14 @@ package br.edu.infnet.AppFreteHidroviario.model.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,15 +22,19 @@ public class Usuario {
 	private String nome;
 	private String senha;
 	private String email;
-	@OneToMany
+	private boolean administrador;
+	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@JoinColumn(name = "idUsuario")
 	private List<Cliente> cliente;
-	@OneToMany
+	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@JoinColumn(name = "idUsuario")
 	private List<Embarcacoes> embarcacoes;
-	@OneToMany
+	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@JoinColumn(name = "idUsuario")
 	private List<Frete> frete;
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "idEndereco")
+	private Endereco endereco;
 
 	public Usuario() {
 	}
@@ -99,5 +105,21 @@ public class Usuario {
 	public void setFrete(List<Frete> frete) {
 		this.frete = frete;
 	}
-	
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+	public boolean isAdministrador() {
+		return administrador;
+	}
+
+	public void setAdministrador(boolean administrador) {
+		this.administrador = administrador;
+	}
+		
 }

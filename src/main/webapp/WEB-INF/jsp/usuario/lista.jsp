@@ -4,7 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <meta charset="ISO-8859-1">
 <title>App Frete Hidroviário - Lista</title>
 </head>
@@ -40,8 +41,14 @@
 						<th>Nome</th>
 						<th>E-mail</th>
 						<th>Senha</th>
+						<th>Administrador</th>
+						<th>Endereço</th>
 						<th>Qtde de Clientes</th>
 						<th>Qtde de Embarcacoes</th>
+						<th>Pedidos</th>
+						<c:if test="${usuario.administrador}">
+							<th></th>
+						</c:if>
 					</tr>
 				</thead>
 				<tbody>
@@ -51,9 +58,14 @@
 							<td>${u.nome}</td>
 							<td>${u.email}</td>
 							<td>${u.senha}</td>
+							<td>${u.administrador}</td>
+							<td>${u.endereco.localidade}</td>
 							<td>${u.clientes.size()}</td>
 							<td>${u.embarcacoes.size()}</td>
-							<td><a href="/usuario/${u.id}/excluir">excluir</a></td>
+							<td>${u.frete.size()}</td>
+							<c:if test="${usuario.administrador}">
+								<td><a href="/usuario/${u.id}/excluir">excluir</a></td>
+							</c:if>
 						</tr>
 					</c:forEach>
 				</tbody>

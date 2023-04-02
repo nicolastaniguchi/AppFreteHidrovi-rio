@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.AppFreteHidroviario.model.domain.Frete;
 import br.edu.infnet.AppFreteHidroviario.model.domain.Usuario;
+import br.edu.infnet.AppFreteHidroviario.service.ClienteService;
+import br.edu.infnet.AppFreteHidroviario.service.EmbarcacoesService;
 import br.edu.infnet.AppFreteHidroviario.service.FreteService;
 
 @Controller
@@ -17,11 +19,19 @@ public class FreteController {
 
 	@Autowired
 	private FreteService freteService;
+	@Autowired
+	private ClienteService clienteService;
+	@Autowired
+	private EmbarcacoesService embarcacoesService;
 
 	private String msg;
 
 	@GetMapping(value = "/frete")
-	public String telaCadastro() {
+	public String telaCadastro(Model model, @SessionAttribute("usuario") Usuario usuario) {
+		
+		model.addAttribute("cliente", clienteService.obterLista(usuario));
+		
+		model.addAttribute("embarcacoes", embarcacoesService.obterLista(usuario));
 
 		return "frete/cadastro";
 	}
@@ -45,6 +55,9 @@ public class FreteController {
 		frete.setUsuario(usuario);
 
 		freteService.incluir(frete);
+		
+		System.out.println("Cliente: " + frete.getCliente().getId());
+		System.out.println("Embarcações: " + frete.getEmbarcacoes());
 
 		msg = "A inclusão do frete " + frete.getDescricao() + " foi realizada com sucesso!";
 

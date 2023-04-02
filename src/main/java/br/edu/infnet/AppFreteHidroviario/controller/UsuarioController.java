@@ -18,6 +18,7 @@ public class UsuarioController {
 
 	private String msg;
 
+
 	@GetMapping(value = "/usuario")
 	public String telaCadastro() {
 

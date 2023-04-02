@@ -19,7 +19,6 @@ public class EmbarcacoesController {
 
 	private String msg;
 
-
 	@GetMapping(value = "/embarcacoes/lista")
 	public String telaLista(Model model, @SessionAttribute("usuario") Usuario usuario) {
 
@@ -33,15 +32,20 @@ public class EmbarcacoesController {
 
 	}
 
-
 	@GetMapping(value = "/embarcacoes/{id}/excluir")
 	public String excluir(@PathVariable Integer id) {
 
 		Embarcacoes embarcacoes = embarcacoesService.obterId(id);
 
-		embarcacoesService.excluir(id);
+		try {
 
-		msg = "A exclusão da embarcação "+ embarcacoes.getNome() +" foi realizada com sucesso!";
+			embarcacoesService.excluir(id);
+
+			msg = "A exclusão da embarcação " + embarcacoes.getNome() + " foi realizada com sucesso!";
+
+		} catch (Exception e) {
+			msg = "Não é possível realizar a exclusão da embarcação: " + embarcacoes.getNome();
+		}
 
 		return "redirect:/embarcacoes/lista";
 	}

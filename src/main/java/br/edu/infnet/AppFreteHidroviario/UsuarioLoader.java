@@ -20,7 +20,8 @@ public class UsuarioLoader implements ApplicationRunner{
 	public void run(ApplicationArguments args) throws Exception {
 
 		Usuario adminUser = new Usuario("Administrador Geral", "adminuser@email.com", "001100");
-
+		adminUser.setAdministrador(true);
+		
 		usuarioService.incluir(adminUser);
 
 		System.out.println("O usuario " + adminUser.getNome() + " foi incluído com sucesso!");
